@@ -1,0 +1,19 @@
+h1{
+  text-align: center;
+  font-size: 40px;
+}
+
+body {
+  text-align: center;
+  background-color: #9123;
+}
+
+ul {
+    text-align: center;
+    list-style-position: inside;
+}
+
+ol{
+  text-align: center;
+  list-style-position: inside;
+}
