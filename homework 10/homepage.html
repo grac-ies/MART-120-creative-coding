@@ -1,0 +1,156 @@
+<html>
+
+    <head>
+        <title>
+        </title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+        <script>
+          //this is my fuction set up :)
+          var headX = 250;
+  var headY = 100;
+  var headDirection = 1;
+
+  var mouthx = 245;
+var mouthy = 135;
+var diameter = 30;
+
+  var bodyX = 200;
+  var bodyY = 185;
+  var bodyDirection = 3
+
+var rightarmx, rightarmy;
+
+  var size = 22;
+  var count = 0;
+  var sizeDirection = 2;
+
+  var x = 100;
+var y = 100;
+var xStep = 3;
+var yStep = 2;
+
+  function setup()
+  {
+      createCanvas(500, 600);
+      rightarmx = width / 2;
+      rightarmy = height;
+  }
+
+  function draw()
+  {
+      background(120,45,78);
+      textSize(33)
+      text("im falling apart!", x,y);
+      fill(0)
+      x += xStep;
+  y += yStep;
+
+  // bounce along the width
+  if (x > width || x < 0) {
+    xStep = xStep * -1;
+  }
+
+  // bounce along the height
+  if (y > height || y < 0) {
+    yStep = yStep * -1;
+  }
+      //do not touch!!
+      text(mouseX + "," + mouseY, 30,30)
+
+      // right arm
+      stroke(500);
+      fill(259, 204, 300);
+      rect(rightarmx, rightarmy, 50, 10);
+        rightarmy = rightarmy - 1;
+        if (rightarmy < 0) {
+    rightarmy = height;
+  }
+
+      // skintone
+      fill(259, 204, 300);
+      circle(headX,headY,175);
+      headX+=headDirection;
+      if(headX >= 418 || headX <= 82)
+      {
+          headDirection *= -1;
+      }
+
+      // eyes
+      strokeWeight(35);
+      fill(100);
+      point(200,75);
+      point(285,75);
+
+      // nose
+      strokeWeight(7)
+      fill(100)
+      triangle(236,99,260,99,248,82)
+
+      // mouth
+      strokeWeight(7)
+    circle(mouthx, mouthy, diameter);
+    mouthx++;
+      //jawline
+      line(170,113,221,144)
+      line(319,99,270,141)
+      // eyebrows
+      line(270,22,304,33)
+      line(219,20,182,30)
+
+      //lashes
+      line(189,70,180,55);
+     line(301,69,309,63);
+        // hair
+      line(130,175,175,50);
+      line(325,50,341,175);
+      line(129,189,133,300);
+      line(349,194,360,299);
+      line(174,8,139,72);
+      line(119,99,102,211);
+      line(105,242,103,302);
+      line(236,5,338,29);
+      line(347,45,383,292);
+      // decoration
+      fill(970, 20, 128);
+      ellipse(250,280,120,260,390,390)
+      // body
+      fill(90, 20, 128);
+      ellipse(250,bodyY,50,190);
+      bodyY += bodyDirection;
+      if(bodyY <= 0 || bodyY >= 450 )
+      {
+          bodyDirection *= -1;
+      }
+
+      // left arm
+      rect(150,195,50,10);
+      // left leg
+      rect(200,335,10,150);
+      // right leg
+      rect(290,335,10,150);
+
+      fill(259, 204, 300);
+      textSize(size);
+      size+= sizeDirection;
+      count++;
+      if(count > 30)
+      {
+          sizeDirection *=+-1;
+          count = 0;
+      }
+      text("grace",10,500 );
+
+
+
+  }
+
+              </script>
+    </head>
+    <body>
+      <hr>
+
+               grace
+               <br> <br>
+               by grace!
+    </body>
+</html>
