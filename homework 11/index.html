@@ -1,0 +1,154 @@
+<html>
+    <head>
+        <title>this is my page</title>
+        <script src="p5.js"></script>
+        <script src="p5.dom.js"></script>
+    </head>
+    <body>
+      <script>
+
+      //the characters
+      var bubbleX = 250;
+      var bubbleY = 100;
+      var bubbleDirection = 1;
+      var width = 500;
+      var height = 600;
+
+      var obX = 200;
+      var obY = 185;
+      var obDirection = 3
+
+      var x = 100;
+      var y = 100;
+      var xStep = 3;
+      var yStep = 2;
+
+      var size = 22;
+      var count = 0;
+      var sizeDirection = 2;
+      // my guy movin
+      var up = 38;
+      var down = 40;
+      var left = 37;
+      var right = 39;
+
+      //my character
+      var characterX = 250;
+      var characterY = 300;
+
+      var mousex = 0;
+      var mousey = 0;
+
+      //ColorPicker...duh
+      let colorPicker;
+      //the function
+function setup()
+    {
+      createCanvas(500, 600);
+      sweepx = width / -15;
+      sweepy = height;
+      colorPicker = createColorPicker("pink");
+      // position color picker
+      colorPicker.position(225, 250);
+      // size color picker
+      colorPicker.size(50, 50);
+                                     }
+
+      function draw()
+    {
+       background(colorPicker.color());
+       fill(0)
+
+       //character
+       fill(190,130,140);
+       circle(characterX,characterY,55);
+
+       // handle keys
+       if(keyIsDown(up))
+       {
+          characterY -= 25;
+       }
+       if(keyIsDown(down))
+       {
+          characterY += 25;
+       }
+       if(keyIsDown(left))
+       {
+          characterX -= 25;
+       }
+       if(keyIsDown(right))
+       {
+          characterX += 25;
+       }
+
+
+       //killer1
+       stroke(0);
+       fill(259, 209, 300);
+       rect(sweepx, sweepy, 550, 10);
+       sweepy = sweepy - 8;
+       if (sweepy < 5)
+    {
+       sweepy = height;
+                        }
+
+       // killer2
+       stroke(0)
+       fill(259, 204, 300);
+       circle(bubbleX,bubbleY,20);
+       bubbleX+=bubbleDirection;
+       count++;
+       if(count > 30)
+       {
+           bubbleDirection *=+-1;
+           count = 2;
+       }
+
+       // killer3 black hole!
+       fill(0);
+       ellipse(250,obY,50,124);
+       obY = obY - 1;
+       if(obY < 0 )
+       {
+           obY = height;
+       }
+
+       // winner tunnel
+       fill(45,75,86);
+       rect(200,380,10,250);
+       rect(290,380,10,250);
+       //walls
+       rect(0,0,500,10);
+       rect(0,0,10,600);
+       rect(490,-5,20,600)
+       rect(10,580,200,300)
+       rect(300,580,600,300)
+
+       textSize(15);
+       text("ESCAPE HERE", 200,350)
+
+        // mouse click shape
+
+       fill(200,150,140);
+       square(mousex, mousey,50);
+
+
+       if(characterX > width  || characterY > width )
+  {
+       fill(0);
+       stroke(5);
+       textSize(26);
+       text("be free!", 300, 250);
+                                     }
+    }
+       function mouseClicked()
+  {
+       mousex = mouseX;
+       mousey = mouseY;
+                         }
+
+
+
+        </script>
+    </body>
+</html>
